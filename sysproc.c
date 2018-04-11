@@ -77,6 +77,17 @@ sys_sleep(void)
   return 0;
 }
 
+// Halt (shutdown) the system by sending a special
+// signal to QEMU.
+// Based on: https://github.com/wkatsak/xv6
+// and: https://wiki.osdev.org/Shutdown
+int
+sys_halt(void)
+{
+    outb(0xf4, 0x00);
+    return 0;
+}
+
 // return how many clock tick interrupts have occurred
 // since start.
 int
