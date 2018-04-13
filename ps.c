@@ -27,12 +27,16 @@ main(int argc, char *argv[]){
   p = &ptable[0];
   printf(1, "PID  STATE     NAME \n");
   while(p != &ptable[MAX_PROC-1] && p->state != UNUSED){
-  	if(p->pid < 10)
-      printf(1,"  %d ",p->pid);
-    if(p->pid >= 10 && p->pid <100)
-      printf(1," %d ",p->pid);
-    if(p->pid >= 100)
-      printf(1,"%d ",p->pid);
+    char num_str[10];
+    char p_format[4];
+    itoa(p->pid, num_str);
+    int num_len = strlen(num_str);
+    *p_format = '%';
+    *(p_format +1) = (char) (0x33 - num_len);
+    *(p_format +2) = 'd';
+    *(p_format +3) = 0x0;
+    //memset((void*)format, 2, 1);
+    printf(1,p_format, p->pid);
       
   	switch(p->state){
   	case UNUSED:

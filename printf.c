@@ -74,6 +74,11 @@ printf(int fd, char *fmt, ...)
         ap++;
       } else if(c == '%'){
         putc(fd, c);
+      } else if(c >= 0x30 && c <= 0x39){
+        for(int j = 0;  j < c - 0x30; j++)
+          putc(fd, 0x20);
+        i++;
+        printint(fd, *ap, 10, 1);
       } else {
         // Unknown % sequence.  Print it to draw attention.
         putc(fd, '%');
