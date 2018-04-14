@@ -129,6 +129,8 @@ int sys_getptable(void){
     s+=4;
     memmove(s,p->name,16);
     s+=16;
+    *(int *)s = p->priority;
+    s+=4;
     p++;
   } 
   return 0;
