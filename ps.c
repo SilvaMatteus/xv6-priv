@@ -62,7 +62,7 @@ main(int argc, char *argv[]){
   	}
     char num_str2[10];
     char p_format2[5];
-    itoa(p->pid, num_str2);
+    itoa(p->priority, num_str2);
     int num_len2 = strlen(num_str2);
     *p_format2 = '%';
     *(p_format2 +1) = (char) (0x39 - num_len2);

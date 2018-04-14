@@ -135,3 +135,14 @@ int sys_getptable(void){
   } 
   return 0;
 }
+
+int
+sys_chpr(void)
+{
+  int pid, prior;
+  if(argint(0,&pid) < 0)
+    return -1;
+  if(argint(1,&prior) < 0)
+    return -1;
+  return chpr(pid, prior);
+}
