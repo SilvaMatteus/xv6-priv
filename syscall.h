@@ -23,3 +23,4 @@
 #define SYS_halt   22
 #define SYS_getptable 23
 #define SYS_chpr   24
+#define SYS_getpr  25
